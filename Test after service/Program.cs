@@ -27,6 +27,41 @@ builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+    string[] roles = new[] { "Admin", "Doctor", "Patient" };
+    foreach (var r in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(r))
+            await roleManager.CreateAsync(new IdentityRole(r));
+    }
+
+    // create default admin if not exists
+    var adminEmail = "admin@mediux.com";
+    var admin = await userManager.FindByEmailAsync(adminEmail);
+    if (admin == null)
+    {
+        admin = new ApplicationUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            FullName = "System Admin",
+            IsPatient = false,
+            IsDoctor = false
+        };
+        var result = await userManager.CreateAsync(admin, "Admin@123"); // password
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(admin, "Admin");
+        }
+    }
+}
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
