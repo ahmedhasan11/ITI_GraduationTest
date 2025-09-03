@@ -18,7 +18,7 @@ namespace ITI_Hackathon.Services
 		}
 		public async Task<IEnumerable<DoctorApprovedDTO>> GetApprovedDoctorsAsync()
 		{
-			List<DoctorApprovedDTO> DoctorsApproved = await _context.Doctors.Include(d => d.User)
+            IEnumerable<DoctorApprovedDTO> DoctorsApproved = await _context.Doctors.Include(d => d.User)
 				.Where(d => d.IsApproved == true)
 				.Select(d => new DoctorApprovedDTO
 				{
@@ -35,7 +35,7 @@ namespace ITI_Hackathon.Services
 
 		public async Task<IEnumerable<DoctorPendingDTO>> GetPendningDoctorsAsync()
 		{
-			List<DoctorPendingDTO> DoctorsPending = await _context.Doctors.Include(d => d.User)
+            IEnumerable<DoctorPendingDTO> DoctorsPending = await _context.Doctors.Include(d => d.User)
 				.Where(d=>d.IsApproved==false)
 				.Select(d => new DoctorPendingDTO()
 				{

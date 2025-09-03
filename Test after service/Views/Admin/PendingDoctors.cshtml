@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ITI_Hackathon.Models.DoctorProfile>
+﻿@model IEnumerable<ITI_Hackathon.ServiceContracts.DTO.DoctorPendingDTO>
 @{
     ViewData["Title"] = "Pending Doctors";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
@@ -31,7 +31,7 @@
                                 <img src="~/assets/images/user/avatar-1.jpg" alt="user-image" class="wid-40 rounded-circle">
                             </div>
                             <div class="flex-grow-1 mx-3">
-                                <h6 class="mb-1">@d.User.FullName</h6>
+                                <h6 class="mb-1">@d.FullName</h6>
                                 <p class="text-muted text-sm mb-0"><i class="fa-solid fa-user-doctor"></i> @d.Specialty</p>
                             </div>
                         </div>
@@ -44,15 +44,15 @@
                             <div class="col-sm-6">
                                 <div class="d-inline-flex align-items-center justify-content-start w-100">
                                     <i class="ti ti-mail"></i>
-                                    <p class="mb-0 ms-2 text-truncate">@d.User.Email</p>
+                                    <p class="mb-0 ms-2 text-truncate">@d.Email</p>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            @* <div class="col-sm-6">
                                 <div class="d-inline-flex align-items-center justify-content-start w-100">
                                     <i class="ti ti-phone"></i>
-                                    <p class="mb-0 ms-2 text-truncate">@d.User.PhoneNumber</p>
+                                    <p class="mb-0 ms-2 text-truncate">@d.</p>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
 
@@ -60,11 +60,11 @@
                     <div class="card-footer">
                         <div class="d-flex align-items-center justify-content-between">
                             <form asp-action="RejectDoctor" method="post">
-                                <input type="hidden" name="id" value="@d.Id" />
+                                <input type="hidden" name="UserId" value="@d.UserId" />
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Reject</button>
                             </form>
                             <form asp-action="ApproveDoctor" method="post">
-                                <input type="hidden" name="id" value="@d.Id" />
+                                <input type="hidden" name="UserId" value="@d.UserId" />
                                 <button type="submit" class="btn btn-sm btn-outline-success">Approve</button>
                             </form>
                         </div>
