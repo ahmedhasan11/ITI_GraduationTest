@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ITI_Hackathon.Entities.DoctorProfile>
+@{
+    ViewData["Title"] = "Pending Doctors";
+}
+
+<h2>Pending Doctors</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Specialty</th>
+            <th>License</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.User.FullName (@d.User.Email)</td>
+                <td>@d.Specialty</td>
+                <td>@d.LicenseNumber</td>
+                <td>
+                    <form asp-action="ApproveDoctor" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@d.Id" />
+                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
