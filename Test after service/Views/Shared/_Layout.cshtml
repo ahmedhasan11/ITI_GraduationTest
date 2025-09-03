@@ -701,7 +701,7 @@
         </div>
     </footer>
     <!-- [ footer ] End -->
-    <!-- [ Customize ] start -->
+    @* <!-- [ Customize ] start -->
     <div class="pc-landing-custmizer">
         <div class="form-check form-check-inline color-checkbox">
             <input class="form-check-input" type="radio" data-pc-value="1" name="pc-landing-color" checked>
@@ -739,7 +739,7 @@
             <input class="form-check-input" type="radio" data-pc-value="9" name="pc-landing-color">
             <i class="fas fa-circle"></i>
         </div>
-    </div>
+    </div> *@
     <!-- [ Customize ] End -->
     <!-- [ Main Content ] end -->
     <!-- Required Js -->
@@ -1077,6 +1077,6 @@
     </div>
 </body>
 
+@await RenderSectionAsync("Scripts", required: false)
 </html>
 
-@await RenderSectionAsync("Scripts", required: false)
