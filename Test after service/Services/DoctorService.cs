@@ -86,23 +86,22 @@ namespace ITI_Hackathon.Services
 
 			//we need to make it as a popup message and also have to be sent to the gamil user
 		}
-		public async Task<bool> DeleteDoctorAsync(string userId)
+		public async Task<string> DeleteDoctorAsync(string userId)
 		{
 			var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
 			if (doctor==null)
 			{
-				return false;
+				return "doctor not found";
 			}
 			 _context.Doctors.Remove(doctor);
 			var user = await _context.Users.FindAsync(userId);
 			if (user != null)
 			{
-				user.IsDoctor = false;
-				await _userManager.RemoveFromRoleAsync(user, "Doctor");
+				await _userManager.DeleteAsync(user);
 			}
 			await _context.SaveChangesAsync();
 
-			return true;
+			return $"Doctor {doctor.User.FullName} has been completely removed from the system.";
 		}
 
 		//we need to convert thedoctor profile obj -->to patientprofile if changedtopatient

@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITI-Hackathon")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe4b7ada5f0112c8f62386d9075d98b43caf5f4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d933f9b6ec68733d5c79198e4c67310b35904d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITI-Hackathon")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITI-Hackathon")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

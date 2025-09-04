@@ -39,7 +39,7 @@
                         <table class="table table-hover" id="pc-dt-simple">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>UserID</th>
                                     <th>Doctor Name</th>
                                     <th>Speciality</th>
                                     <th>LicenseNumber</th>
@@ -65,17 +65,17 @@
                                             </div>
                                         </td>
                                         <td>@doctor.Specialty</td>
-                                        <td>@doctor.Rating</td>
+                                        <td>@doctor.LicenseNumber</td>
                                         <td>@doctor.Rating</td>
                                         <td>
-                                            @* @if (doctor.IsA)
+                                            @if (doctor.IsApproved)
                                             {
                                                 <span class="badge bg-light-success rounded-pill f-12">Verified</span>
                                             }
                                             else
                                             {
                                                 <span class="badge bg-light-danger rounded-pill f-12">Pending</span>
-                                            } *@
+                                            }
                                         </td>
                                         <td class="text-center">
                                             <ul class="list-inline me-auto mb-0">
